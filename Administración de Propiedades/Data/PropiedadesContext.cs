@@ -13,6 +13,7 @@ namespace Administración_de_Propiedades.Data
         public DbSet<Inquilino> Inquilinos { get; set; }
         public DbSet<Pago> Pagos { get; set; }
         public DbSet<Propiedad> Propiedades { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
         // Configurar relaciones en OnModelCreating
         protected override void OnModelCreating(ModelBuilder modelBuilder)
