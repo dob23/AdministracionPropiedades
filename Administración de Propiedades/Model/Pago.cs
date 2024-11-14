@@ -17,9 +17,10 @@ namespace Administración_de_Propiedades.Model
         public DateTime FechaPago { get; set; }
 
         [Required]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Monto { get; set; }
 
         [Required]
-        public string Estado { get; set; }
+        public string Estado { get; set; } 
     }
 }

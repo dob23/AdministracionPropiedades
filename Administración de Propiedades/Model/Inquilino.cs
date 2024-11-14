@@ -10,19 +10,12 @@ namespace Administración_de_Propiedades.Model
         public int IdInquilino { get; set; }
 
         [Required]
-        [MaxLength(100)]
         public string Nombre { get; set; }
 
         [Required]
-        [MaxLength(100)]
         public string Apellido { get; set; }
 
-        [Required]
-        [MaxLength(15)]
         public string Telefono { get; set; }
-
-        [Required]
-        [EmailAddress]
         public string Email { get; set; }
 
         // Relación muchos a uno con Propiedad

@@ -1,3 +1,6 @@
+using Administración_de_Propiedades.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace Administración_de_Propiedades
 {
     public class Program
@@ -5,6 +8,10 @@ namespace Administración_de_Propiedades
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            // Configura el DbContext para usar la cadena de conexión 'Propiedades' desde appsettings.json
+            builder.Services.AddDbContext<PropiedadesContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("Propiedades")));
 
             // Add services to the container.
             builder.Services.AddRazorPages();
@@ -15,7 +22,6 @@ namespace Administración_de_Propiedades
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
