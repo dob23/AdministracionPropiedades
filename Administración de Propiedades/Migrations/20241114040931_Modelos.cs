@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Administración_de_Propiedades.Migrations
 {
     /// <inheritdoc />
-    public partial class Dbset : Migration
+    public partial class Modelos : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,7 +17,7 @@ namespace Administración_de_Propiedades.Migrations
                 {
                     IdPropiedad = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Direccion = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false),
+                    Direccion = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TipoPropiedad = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     NumeroHabitaciones = table.Column<int>(type: "int", nullable: false),
                     PrecioAlquiler = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
@@ -34,9 +34,9 @@ namespace Administración_de_Propiedades.Migrations
                 {
                     IdInquilino = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Apellido = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Telefono = table.Column<string>(type: "nvarchar(15)", maxLength: 15, nullable: false),
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Apellido = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IdPropiedad = table.Column<int>(type: "int", nullable: false)
                 },
@@ -72,13 +72,13 @@ namespace Administración_de_Propiedades.Migrations
                         column: x => x.IdInquilino,
                         principalTable: "Inquilinos",
                         principalColumn: "IdInquilino",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Contratos_Propiedades_IdPropiedad",
                         column: x => x.IdPropiedad,
                         principalTable: "Propiedades",
                         principalColumn: "IdPropiedad",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(

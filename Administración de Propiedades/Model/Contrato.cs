@@ -26,6 +26,7 @@ namespace Administración_de_Propiedades.Model
         public DateTime FechaFin { get; set; }
 
         [Required]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Deposito { get; set; }
 
         [Required]

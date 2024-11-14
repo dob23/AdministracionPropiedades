@@ -68,8 +68,7 @@ namespace Administración_de_Propiedades.Migrations
 
                     b.Property<string>("Apellido")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -80,13 +79,11 @@ namespace Administración_de_Propiedades.Migrations
 
                     b.Property<string>("Nombre")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Telefono")
                         .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("IdInquilino");
 
@@ -133,8 +130,7 @@ namespace Administración_de_Propiedades.Migrations
 
                     b.Property<string>("Direccion")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Disponible")
                         .HasColumnType("bit");
@@ -159,13 +155,13 @@ namespace Administración_de_Propiedades.Migrations
                     b.HasOne("Administración_de_Propiedades.Model.Inquilino", "Inquilino")
                         .WithMany("Contratos")
                         .HasForeignKey("IdInquilino")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Administración_de_Propiedades.Model.Propiedad", "Propiedad")
                         .WithMany("Contratos")
                         .HasForeignKey("IdPropiedad")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Inquilino");
