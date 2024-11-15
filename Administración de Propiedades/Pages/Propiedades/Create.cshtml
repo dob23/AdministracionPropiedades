@@ -1,0 +1,44 @@
+﻿@page
+@model Administración_de_Propiedades.Pages.Propiedades.CreateModel
+@{
+    ViewData["Title"] = "Create Propiedad";
+}
+
+<h1>Create Propiedad</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Propiedad.Direccion" class="control-label"></label>
+                <input asp-for="Propiedad.Direccion" class="form-control" />
+                <span asp-validation-for="Propiedad.Direccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Propiedad.Ciudad" class="control-label"></label>
+                <input asp-for="Propiedad.Ciudad" class="form-control" />
+                <span asp-validation-for="Propiedad.Ciudad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Propiedad.Precio" class="control-label"></label>
+                <input asp-for="Propiedad.Precio" type="number" step="0.01" class="form-control" />
+                <span asp-validation-for="Propiedad.Precio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Propiedad.Descripcion" class="control-label"></label>
+                <textarea asp-for="Propiedad.Descripcion" class="form-control"></textarea>
+                <span asp-validation-for="Propiedad.Descripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="Create" class="btn btn-success" />
+                <a asp-page="Index" class="btn btn-primary">Back To List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
