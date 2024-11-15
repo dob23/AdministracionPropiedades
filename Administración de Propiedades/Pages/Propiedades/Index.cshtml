@@ -1,4 +1,49 @@
 ﻿@page
+@using Administración_de_Propiedades.Model
 @model Administración_de_Propiedades.Pages.Propiedades.IndexModel
 @{
+    ViewData["Title"] = "Index Propiedades";
 }
+
+<p>
+    <a asp-page="Create" class="btn btn-success">Crear Nueva Propiedad</a>
+</p>
+
+<h1>Listado de Propiedades</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Propiedades[0].Direccion)</th>
+            <th>@Html.DisplayNameFor(model => model.Propiedades[0].TipoPropiedad)</th>
+            <th>@Html.DisplayNameFor(model => model.Propiedades[0].NumeroHabitaciones)</th>
+            <th>@Html.DisplayNameFor(model => model.Propiedades[0].PrecioAlquiler)</th>
+            <th>@Html.DisplayNameFor(model => model.Propiedades[0].Disponible)</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var propiedad in Model.Propiedades)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => propiedad.Direccion)</td>
+                <td>@Html.DisplayFor(modelItem => propiedad.TipoPropiedad)</td>
+                <td>@Html.DisplayFor(modelItem => propiedad.NumeroHabitaciones)</td>
+                <td>@Html.DisplayFor(modelItem => propiedad.PrecioAlquiler)</td>
+                <td>
+                    @if (propiedad.Disponible)
+                    {
+                        <span class="badge bg-success">Disponible</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">No Disponible</span>
+                    }
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@propiedad.IdPropiedad" class="btn btn-primary">Editar</a>
+                    <a asp-page="./Delete" asp-route-id="@propiedad.IdPropiedad" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
