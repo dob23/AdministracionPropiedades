@@ -1,0 +1,49 @@
+﻿@page
+@using Administración_de_Propiedades.Model
+@model Administración_de_Propiedades.Pages.Pagos.IndexModel
+@{
+    ViewData["Title"] = "Index Pagos";
+}
+
+<p>
+    <a asp-page="Create" class="btn btn-success">Registrar Nuevo Pago</a>
+</p>
+
+<h1>Listado de Pagos</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Pagos[0].Contrato.Propiedad.Direccion)</th>
+            <th>@Html.DisplayNameFor(model => model.Pagos[0].Contrato.Inquilino.Nombre)</th>
+            <th>@Html.DisplayNameFor(model => model.Pagos[0].FechaPago)</th>
+            <th>@Html.DisplayNameFor(model => model.Pagos[0].Monto)</th>
+            <th>@Html.DisplayNameFor(model => model.Pagos[0].Estado)</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pago in Model.Pagos)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => pago.Contrato.Propiedad.Direccion)</td>
+                <td>@Html.DisplayFor(modelItem => pago.Contrato.Inquilino.Nombre)</td>
+                <td>@Html.DisplayFor(modelItem => pago.FechaPago.ToString("yyyy-MM-dd"))</td>
+                <td>@Html.DisplayFor(modelItem => pago.Monto)</td>
+                <td>
+                    @if (pago.Estado == "Pagado")
+                    {
+                        <span class="badge bg-success">Pagado</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-danger">Pendiente</span>
+                    }
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@pago.IdPago" class="btn btn-primary">Editar</a>
+                    <a asp-page="./Delete" asp-route-id="@pago.IdPago" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
