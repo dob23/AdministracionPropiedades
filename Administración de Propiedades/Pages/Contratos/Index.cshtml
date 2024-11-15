@@ -1,0 +1,42 @@
+﻿@page
+@using Administración_de_Propiedades.Model
+@model Administración_de_Propiedades.Pages.Contratos.IndexModel
+@{
+    ViewData["Title"] = "Index Contratos";
+}
+
+<p>
+    <a asp-page="Create" class="btn btn-success">Crear Nuevo Contrato</a>
+</p>
+
+<h1>Listado de Contratos</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Contratos[0].Propiedad.Direccion)</th>
+            <th>@Html.DisplayNameFor(model => model.Contratos[0].Inquilino.Nombre)</th>
+            <th>@Html.DisplayNameFor(model => model.Contratos[0].Inquilino.Apellido)</th>
+            <th>@Html.DisplayNameFor(model => model.Contratos[0].FechaInicio)</th>
+            <th>@Html.DisplayNameFor(model => model.Contratos[0].FechaFin)</th>
+            <th>@Html.DisplayNameFor(model => model.Contratos[0].Deposito)</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var contrato in Model.Contratos)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => contrato.Propiedad.Direccion)</td>
+                <td>@Html.DisplayFor(modelItem => contrato.Inquilino.Nombre)</td>
+                <td>@Html.DisplayFor(modelItem => contrato.Inquilino.Apellido)</td>
+                <td>@Html.DisplayFor(modelItem => contrato.FechaInicio.ToString("yyyy-MM-dd"))</td>
+                <td>@Html.DisplayFor(modelItem => contrato.FechaFin.ToString("yyyy-MM-dd"))</td>
+                <td>@Html.DisplayFor(modelItem => contrato.Deposito)</td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@contrato.IdContrato" class="btn btn-primary">Editar</a>
+                    <a asp-page="./Delete" asp-route-id="@contrato.IdContrato" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
