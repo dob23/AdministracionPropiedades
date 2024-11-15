@@ -1,0 +1,39 @@
+﻿@page
+@model Administración_de_Propiedades.Pages.Pagos.CreateModel
+@{
+    ViewData["Title"] = "Create Pago";
+}
+
+<h1>Create Pago</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Pago.IdContrato" class="control-label"></label>
+                <select asp-for="Pago.IdContrato" asp-items="ViewBag.Contratos" class="form-control"></select>
+                <span asp-validation-for="Pago.IdContrato" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pago.Monto" class="control-label"></label>
+                <input asp-for="Pago.Monto" type="number" step="0.01" class="form-control" />
+                <span asp-validation-for="Pago.Monto" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pago.FechaPago" class="control-label"></label>
+                <input asp-for="Pago.FechaPago" type="date" class="form-control" />
+                <span asp-validation-for="Pago.FechaPago" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="Create" class="btn btn-success" />
+                <a asp-page="Index" class="btn btn-primary">Back To List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
