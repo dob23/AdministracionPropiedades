@@ -1,0 +1,40 @@
+﻿@page
+@using Administración_de_Propiedades.Model
+@model Administración_de_Propiedades.Pages.Inquilinos.IndexModel
+@{
+    ViewData["Title"] = "Index Inquilinos";
+}
+
+<p>
+    <a asp-page="Create" class="btn btn-success">Crear Nuevo Inquilino</a>
+</p>
+
+<h1>Listado de Inquilinos</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Inquilinos[0].Nombre)</th>
+            <th>@Html.DisplayNameFor(model => model.Inquilinos[0].Apellido)</th>
+            <th>@Html.DisplayNameFor(model => model.Inquilinos[0].Telefono)</th>
+            <th>@Html.DisplayNameFor(model => model.Inquilinos[0].Email)</th>
+            <th>@Html.DisplayNameFor(model => model.Inquilinos[0].Propiedad.Direccion)</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var inquilino in Model.Inquilinos)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => inquilino.Nombre)</td>
+                <td>@Html.DisplayFor(modelItem => inquilino.Apellido)</td>
+                <td>@Html.DisplayFor(modelItem => inquilino.Telefono)</td>
+                <td>@Html.DisplayFor(modelItem => inquilino.Email)</td>
+                <td>@Html.DisplayFor(modelItem => inquilino.Propiedad.Direccion)</td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@inquilino.IdInquilino" class="btn btn-primary">Editar</a>
+                    <a asp-page="./Delete" asp-route-id="@inquilino.IdInquilino" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
