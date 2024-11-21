@@ -1,0 +1,17 @@
+﻿@page
+@model Administración_de_Propiedades.Pages.Account.RegisterModel
+@{
+}
+<h2>Registro</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label for="nombreUsuario" class="form-label">Nombre de Usuario</label>
+        <input type="text" class="form-control" asp-for="Usuario.NombreUsuario" id="nombreUsuario" required>
+    </div>
+    <div class="mb-3">
+        <label for="contraseña" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" asp-for="Usuario.Contraseña" id="contraseña" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Registrar</button>
+</form>

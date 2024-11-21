@@ -1,0 +1,21 @@
+﻿@page
+@model Administración_de_Propiedades.Pages.Account.LoginModel
+@using Administración_de_Propiedades.Model
+
+<h2>Login</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label for="nombreUsuario" class="form-label">Nombre de Usuario</label>
+        <input type="text" class="form-control" asp-for="Usuario.NombreUsuario" id="nombreUsuario" required>
+    </div>
+    <div class="mb-3">
+        <label for="contraseña" class="form-label">Contraseña</label>
+        <input type="password" class="form-control" asp-for="Usuario.Contraseña" id="contraseña" required>
+    </div>
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="recordarme" name="recordarme">
+        <label class="form-check-label" for="recordarme">Recordarme</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+</form>
