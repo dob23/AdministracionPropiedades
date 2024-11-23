@@ -1,5 +1,6 @@
-using Administración_de_Propiedades.Data;
 using Microsoft.EntityFrameworkCore;
+using Administración_de_Propiedades.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Administración_de_Propiedades
 {
@@ -9,16 +10,29 @@ namespace Administración_de_Propiedades
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Configura el DbContext para usar la cadena de conexión 'Propiedades' desde appsettings.json
+            builder.Services.AddRazorPages(options =>
+            {
+               
+                options.Conventions.AllowAnonymousToPage("/Autenticacion/Login");
+                options.Conventions.AllowAnonymousToPage("/Autenticacion/Register");
+            });
+           
+            builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
+                {
+                 
+                    options.Cookie.Name = "MyCookieAuth";
+                    options.LoginPath = "/Autenticacion/Login";
+                });
+           
             builder.Services.AddDbContext<PropiedadesContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("Propiedades")));
+                options.UseSqlServer(builder.Configuration.GetConnectionString("Propiedades"))
+            );
 
-            // Add services to the container.
-            builder.Services.AddRazorPages();
-
+            
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+            
             if (!app.Environment.IsDevelopment())
             {
                 app.UseExceptionHandler("/Error");
@@ -29,11 +43,13 @@ namespace Administración_de_Propiedades
             app.UseStaticFiles();
 
             app.UseRouting();
-
+  
+            app.UseAuthentication();
             app.UseAuthorization();
-
+         
             app.MapRazorPages();
 
+           
             app.Run();
         }
     }
