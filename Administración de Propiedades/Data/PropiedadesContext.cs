@@ -15,24 +15,24 @@ namespace Administración_de_Propiedades.Data
         public DbSet<Propiedad> Propiedades { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
 
-        // Configurar relaciones en OnModelCreating
+       
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            // Relación entre Contrato y Propiedad
+            
             modelBuilder.Entity<Contrato>()
                 .HasOne(c => c.Propiedad)
                 .WithMany(p => p.Contratos)
-                .HasForeignKey(c => c.IdPropiedad)  // Usar IdPropiedad según tu definición
-                .OnDelete(DeleteBehavior.Restrict);  // Evita cascada en la eliminación
+                .HasForeignKey(c => c.IdPropiedad)  
+                .OnDelete(DeleteBehavior.Restrict);  
 
-            // Relación entre Contrato e Inquilino
+           
             modelBuilder.Entity<Contrato>()
                 .HasOne(c => c.Inquilino)
                 .WithMany(i => i.Contratos)
-                .HasForeignKey(c => c.IdInquilino)  // Usar IdInquilino según tu definición
-                .OnDelete(DeleteBehavior.Restrict);  // Evita cascada en la eliminación
+                .HasForeignKey(c => c.IdInquilino)  
+                .OnDelete(DeleteBehavior.Restrict); 
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Administración_de_Propiedades.Model
@@ -12,7 +13,7 @@ namespace Administración_de_Propiedades.Model
         public string Direccion { get; set; }
 
         [Required]
-        public string TipoPropiedad { get; set; } 
+        public string TipoPropiedad { get; set; }
 
         [Required]
         public int NumeroHabitaciones { get; set; }
@@ -24,8 +25,7 @@ namespace Administración_de_Propiedades.Model
         [Required]
         public bool Disponible { get; set; }
 
-        // Relación uno a muchos con Inquilinos y Contratos
-        public ICollection<Inquilino> Inquilinos { get; set; }
-        public ICollection<Contrato> Contratos { get; set; }
+        public ICollection<Inquilino> Inquilinos { get; set; } = new List<Inquilino>();
+        public ICollection<Contrato> Contratos { get; set; } = new List<Contrato>();
     }
 }

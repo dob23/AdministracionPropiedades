@@ -2,7 +2,7 @@
 @using Administración_de_Propiedades.Model
 @model Administración_de_Propiedades.Pages.Propiedades.IndexModel
 @{
-    ViewData["Title"] = "Index Propiedades";
+    ViewData["Title"] = "Lista de Propiedades";
 }
 
 <p>
@@ -13,11 +13,11 @@
 <table class="table">
     <thead>
         <tr>
-            <th>@Html.DisplayNameFor(model => model.Propiedades[0].Direccion)</th>
-            <th>@Html.DisplayNameFor(model => model.Propiedades[0].TipoPropiedad)</th>
-            <th>@Html.DisplayNameFor(model => model.Propiedades[0].NumeroHabitaciones)</th>
-            <th>@Html.DisplayNameFor(model => model.Propiedades[0].PrecioAlquiler)</th>
-            <th>@Html.DisplayNameFor(model => model.Propiedades[0].Disponible)</th>
+            <th>@Html.DisplayNameFor(model => model.Propiedades.FirstOrDefault().Direccion)</th>
+            <th>@Html.DisplayNameFor(model => model.Propiedades.FirstOrDefault().TipoPropiedad)</th>
+            <th>@Html.DisplayNameFor(model => model.Propiedades.FirstOrDefault().NumeroHabitaciones)</th>
+            <th>@Html.DisplayNameFor(model => model.Propiedades.FirstOrDefault().PrecioAlquiler)</th>
+            <th>@Html.DisplayNameFor(model => model.Propiedades.FirstOrDefault().Disponible)</th>
             <th>Acciones</th>
         </tr>
     </thead>

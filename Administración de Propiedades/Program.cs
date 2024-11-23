@@ -11,7 +11,7 @@ namespace Administración_de_Propiedades
 
             // Configura el DbContext para usar la cadena de conexión 'Propiedades' desde appsettings.json
             builder.Services.AddDbContext<PropiedadesContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("Propiedades")));
+            options.UseSqlServer(builder.Configuration.GetConnectionString("Propiedades")));
 
             // Add services to the container.
             builder.Services.AddRazorPages();
